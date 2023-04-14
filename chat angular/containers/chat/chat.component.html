@@ -1,0 +1,29 @@
+<div class="container" style="color: black;">
+  <h1 style="color: black;">Competent programming - Chat App</h1>
+  <app-usernname (userNameEvent)="userNameUpdate($event)" *ngIf="!userName"></app-usernname>
+  <div style="color: black; background-color: rgb(0, 255, 68);" class="chatbox">
+    <div style="color: black;background-color: rgb(85, 0, 255);" class="chatbox__user-list">
+      <h2 style="color: black;">User list</h2>
+      <div class="chatbox__user--active" *ngFor="let user of userList">
+        <p style="color: black;">{{ user }}</p>
+      </div>
+    </div>
+    <!-- https://www.youtube.com/watch?v=7wqXt9iU3rk -->
+    <div class="messages_list">
+      <div class="chatbox__messages" style="background-color: rgb(139, 151, 151);" *ngFor="let msg of messageList"
+        [ngClass]="{mine: msg.mine}">
+        <div class="user-message">
+          <div class="message-box">
+            <p style="color: black;background-color: aqua;" class="name">{{ msg.userName }}</p>
+
+            <p style="color: black;background-color: aqua;" class="message">{{ msg.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="send-message">
+    <input type="text" [(ngModel)]="message">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
